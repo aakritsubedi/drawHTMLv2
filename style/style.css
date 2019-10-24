@@ -1,0 +1,146 @@
+.text-navy{
+  color: #8B78E6;
+}
+.text-moroon{
+  color: #B83227;
+}
+
+/* Sidebar */
+.project-info img{
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  line-height: 75px;
+}
+.project-info h1{
+  font-size: 20px;
+  font-family: cursive;
+  line-height: 20px;
+}
+.menu{
+  text-align: center;
+}
+.menu .menu-title{
+  background-color: #000000;
+  color: #ffffff;
+  display: block;
+  line-height: 40px;
+  font-weight: bolder;
+  font-size: 18px;
+  padding: 0 5px;
+  margin-bottom:2px;
+}
+.menu .action{
+  background-color: #E0E0E0;
+  padding:0 5px;
+  float: right;
+  border-radius: 50%;
+  color: #000000;
+  font-weight: bolder;
+  line-height: 30px;
+  margin:5px;
+  
+}
+.menu .draggable{
+  list-style: none;
+  text-align: center;
+  display: none;
+}
+.draggable li{
+  line-height: 30px;
+  background-color: #99AAAB;
+  border-bottom: 1px solid #cccccc;
+  width: 80%;
+  margin:2px auto;
+  /* cursor: move; */
+  border-radius: 6px;
+}
+.options{
+  text-align: center;
+}
+.options .menu-title{
+  background-color: #000000;
+  color: #ffffff;
+  display: block;
+  line-height: 40px;
+  font-weight: bolder;
+  font-size: 18px;
+  padding: 0 5px;
+  margin-bottom: 2px;
+}
+.preview{
+  text-align: center;
+}
+.preview .menu-title{
+  background-color: #000000;
+  color: #ffffff;
+  display: block;
+  line-height: 40px;
+  font-weight: bolder;
+  font-size: 18px;
+  padding: 0 5px;
+  margin-bottom: 2px;
+}
+#get-sidebar{
+  border:none;
+  padding:2px 10px;
+  line-height: 30px;
+  background-color: #000000;
+  color:#f4f4f4;
+  font-size: 18px;
+  z-index: 2;
+  position: absolute;
+  display: none;
+}
+#display-opt{
+  text-align: center;
+  padding: 2px;
+}
+.template{
+  text-align: center;
+}
+.template .menu-title{
+  background-color: #000000;
+  color: #ffffff;
+  display: block;
+  line-height: 40px;
+  font-weight: bolder;
+  font-size: 18px;
+  padding: 0 5px;
+  margin-bottom: 2px;
+}
+.template input{
+  margin:5px 0;
+  padding-left:5px;
+}
+.save-edit-input{
+  line-height: 25px;
+  border: none;
+  margin:5px 0; 
+}
+.opt{
+  text-align:center;
+}
+.opt .menu-title{
+  background-color: #000000;
+  color: #ffffff;
+  display: block;
+  line-height: 40px;
+  font-weight: bolder;
+  font-size: 18px;
+  padding: 0 5px;
+  margin-bottom: 2px;
+}
+.opt button{
+  margin-top:5px;
+  line-height:25px;
+  padding:0 10px;
+  border:none;
+  color: white;
+}
+.opt #save{
+  background-color: #26ae60;
+}
+.opt #edit{
+  background-color: #F4C724;
+}

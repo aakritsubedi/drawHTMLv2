@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Draw HTML</title>
+	<link rel="stylesheet" href="style/reset.css">
+	<link rel="stylesheet" href="style/layout.css">
+	<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+	<div class="container">
+		<button id='get-sidebar'>Sidebar &rarr;</button>
+		<div class="sidebar-menu">
+			<div class="project-info">
+                <img src="images/logo.png" alt="Logo">
+                <h1 class="logo">
+					&#9998;
+                    <span class='text-navy'>Draw</span> 
+                    <span class='text-moroon'>HTML</span>
+                </h1>
+			</div>
+			<div class="option-wrapper">
+				<div class="menu">
+					<span class="menu-title">Menu <span class="action"> &darr;</span></span>
+                    <ul class='draggable'>
+                        <li>DIV</li>
+                        <li>SPAN</li>
+                        <li>Button</li>
+						<li>Img</li>
+						<li>Lists</li>
+						<li>List Items</li>
+						<li>Navigation Menu</li>
+						<li>Navigation Items</li>
+                        <li>TABLE</li>
+                        <li>Social Media Plugin</li>
+                        <li>Date & Time</li>
+                    </ul>
+				</div>
+				<div class="options">
+					<span class="menu-title">Elements Info</span>
+					<!-- Display Options  -->
+					<div id="display-opt"></div>
+				</div>
+				<div class="template">
+					<span class="menu-title">Templates</span>
+					<input type="file" id='load-template'>
+				</div>
+				<div class="template">
+					<span class="menu-title" id="save-as">Save as HTML</span>
+				</div>
+				<div class="opt">
+					<span class="menu-title">Options</span>
+					<input type="text" placeholder="Key" class='save-edit-input' id='key'>
+					<button id='save'>Save</button>
+					<button id='edit'>Edit</button>
+				</div>
+				<div class="preview">
+					<span class="menu-title" id='preview'>Preview</span>
+				</div>
+			</div>
+		</div>
+		<div class="html-playground" id="playground"></div>
+	</div>
+	<script type="module" src="js/main.js"></script>
+</body>
+</html>
