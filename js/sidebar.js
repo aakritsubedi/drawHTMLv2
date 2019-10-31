@@ -162,6 +162,7 @@ class Sidebar{
     let ul=document.createElement('ul');
     //ul.style.paddingTop='10px';
     for(let i=0;i<this.allChild.length;i++){
+    
       let li=document.createElement('li');
       li.style.fontSize='14px';
       li.classList.add('liActivity');
