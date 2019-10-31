@@ -237,8 +237,7 @@ class HtmlElement{
     div.style.color='#ffffff';
     div.setAttribute('class','ask-opt');
     //div.style.contentAlign="center";
-    div.innerHTML='<span class="ask-opt">Image Options</span>';
-
+    div.innerHTML='<span style="display:block;line-height:45px;padding:0 10px;font-size:22px;">Image Options</span>';
     this.createInputType('text','Image URL','img-src',div);
     this.createInputType('submit','Add Image','add-img',div)
 
@@ -263,7 +262,7 @@ class HtmlElement{
     div.style.color='#ffffff';
     div.setAttribute('class','ask-opt');
     //div.style.contentAlign="center";
-    div.innerHTML='<span class="ask-opt">Table Options</span>';
+    div.innerHTML='<span style="display:block;line-height:45px;padding:0 10px;font-size:22px;">Table Options</span>';
 
     this.createInputType('number','No. of rows','row',div);
     this.createInputType('number','No. of column','column',div);

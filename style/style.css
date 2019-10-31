@@ -314,11 +314,3 @@ kbd , .kbd{
 #resize-btn{
   cursor: nwse-resize;
 }
-.ask-opt{
-  background-color:#222222;
-  color:#ffffff;display:block;
-  line-height:45px;padding:0 10px;
-  border-bottom:1px solid #ffffff; 
-  margin-bottom:5px;
-  font-size:22px;
-}
