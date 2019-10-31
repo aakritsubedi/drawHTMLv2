@@ -85,7 +85,6 @@ class HtmlElement{
     div.style.backgroundColor=getRandomColor();
     this.id='div_'+Date.now();
     div.setAttribute('id',this.id);
-    div.style.resize='both';
     this.parentElement.appendChild(div);
   }
   createSpan(){

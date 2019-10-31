@@ -40,6 +40,7 @@ class Sidebar{
     for(let i=0;i<list.length;i++){
       list[i].setAttribute('draggable',true);
       list[i].setAttribute('title','Drag '+list[i].innerText+' tag');
+      list[i].setAttribute('ondragstart','event.dataTransfer.setData(\'text/plain\',null)');
     }
   }
   menuToggle(){
@@ -142,11 +143,13 @@ class Sidebar{
     //console.log(content);
   }
   activityLog(){
+    let sidebar = document.querySelector('.sidebar-menu');
+    sidebar.style.borderTop='none';
+    sidebar.style.borderBottom='none';
     let allActivity=document.querySelector('.all-activity');
     allActivity.style.display='block';
     let h3=document.createElement('h3');
     h3.innerHTML='&#9997; Activity Log';
-    //h3.style.textDecoration='underline';
     h3.style.color='#ffffff';
     h3.style.backgroundColor='#4C4B4B';
     h3.style.lineHeight='34px';
@@ -154,6 +157,8 @@ class Sidebar{
     span.classList.add('cross-btn');
     span.innerHTML='&#10006;';
     span.addEventListener('click',(e)=>{
+      sidebar.style.borderTop='6px solid #f2f2f2';
+      sidebar.style.borderBottom='6px solid #f2f2f2';
       allActivity.removeChild(h3);
       allActivity.removeChild(ul);
       allActivity.style.display='none';

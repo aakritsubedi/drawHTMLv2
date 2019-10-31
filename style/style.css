@@ -5,8 +5,8 @@
   color: #B83227;
 }
 kbd , .kbd{
-	margin: 4px 0.2em;
-	padding: 0.3em 0.8em;
+	margin: 5px 0.3em;
+	padding: 0.4em 1em;
 	border-radius: 3px;
 	border: 1px solid #7B8788;
 	color: rgb(51, 51, 51);
@@ -16,7 +16,7 @@ kbd , .kbd{
 	display: inline-block;
 	box-shadow: 3px 3px 1px 0px rgba(0,0,0,0.60);
 	background-color: rgb(230, 230, 230);
-	text-shadow: 0 1px 0 #f4f4f4;
+  text-shadow: 0 1px 0 #f4f4f4;
 }
 /* Sidebar */
 .project-info img{
@@ -25,12 +25,13 @@ kbd , .kbd{
   border-radius: 50%;
   line-height: 80px;
   box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.60);
+  margin:5px 0;
 }
 .project-info h1{
-  /* padding-top: 5px; */
   font-size: 22px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Indie Flower', cursive;
   line-height: 24px;
+  padding:5px 0;
 }
 .menu{
   text-align: center;
@@ -50,14 +51,18 @@ kbd , .kbd{
 .menu .draggable{
   list-style: none;
   text-align: center;
-  /* display: none; */
-  margin-bottom: 5px;
 }
 .draggable li{
   line-height: 30px;
-  /* border-bottom: 1px solid #cccccc; */
   margin:2px 0;
   display: inline;
+}
+.draggable li:hover{
+  cursor:move;
+}
+.draggable li:hover > kbd{
+  background-color: rgb(183, 187, 189);
+  color: #ffffff;
 }
 .draggable .break{
   display: block;
@@ -185,7 +190,7 @@ kbd , .kbd{
   font-weight: bolder;
   font-size: 18px;
   padding: 0 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   box-shadow: 2px 2px 1px 1px rgba(0,0,0,0.60);
 }
 .projects select{
@@ -305,4 +310,7 @@ kbd , .kbd{
 }
 .html-playground > p{
   text-align: justify;
+}
+#resize-btn{
+  cursor: nwse-resize;
 }

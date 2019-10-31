@@ -8,10 +8,14 @@
   min-height: 100vh;
   width: 20%;
   float: left;
-  background-color: #f4f4f4;
+  background-color: #f2f2f2;
   position: fixed;
   overflow-x: hidden;
+  border: 6px solid #f2f2f2;
+  border-right: 6px solid #000000;
+  border-left: none;
 }
+
 .project-info{
   text-align: center;
   padding:5px;
@@ -28,12 +32,12 @@
 }
 
 .all-activity{
-  height: 100vh;
+  height: 98vh;
   width: 100%;
   overflow-x: hidden;
   position:absolute;
   top:0;
   display: none;
-  background-color: #DAE0E2;
+  background-color: #f4f4f4;
   padding:0;
 }

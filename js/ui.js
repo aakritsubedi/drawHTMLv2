@@ -380,21 +380,5 @@ class UI{
 
     this.selectedElement.appendChild(div);
   }
-  //Resize: to resize the selected element to new size 
-  resizeElement(){
-    //newValue = previousValue + change
-  }
-  //Drag: to drag the selected element to new position within wrapper
-  dragElement(){
-    //newValue = previousValue + change
-  }
-  //Delete: to remove the particular element from the DOM
-  deleteElement(){
-    //remove the element from the parent container
-  }
-  //Update: to update the change in the user interface
-  update(){
-    //update the value
-  }
 }
 export default UI
