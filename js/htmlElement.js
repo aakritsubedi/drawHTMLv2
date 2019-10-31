@@ -1,10 +1,9 @@
 import UI from '../js/ui.js';
 function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
+  var r = Math.floor(Math.random()*256);          // Random between 0-255
+  var g = Math.floor(Math.random()*256);          // Random between 0-255
+  var b = Math.floor(Math.random()*256);          // Random between 0-255
+  var color = 'rgb(' + r + ',' + g + ',' + b + ')'; // Collect all to a string
   return color;
 }
 function getRandomNo(lower,upper){
@@ -14,6 +13,7 @@ class HtmlElement{
   constructor(parentElement,element){
     this.inputOpt=null;
     this.elementOffsetTop=null;
+    this.id=null;
     this.init(parentElement,element);
   }
   init(parentElement,element){
@@ -21,20 +21,16 @@ class HtmlElement{
     this.element=element;
     this.createElement();
   }
-  getOffsetTop(){
-    let totalHt=0;
-    let allChildren = document.querySelector('.html-playground').children;
-    console.log(allChildren);
-    for(let i=0;i<allChildren.length;i++){
-      if(allChildren[i].className=='ask-opt'){
-        continue;
-      }
-      else{
-        totalHt += allChildren[i].clientHeight;
-      }
+  getOffsetTop(parentEle){
+    let offsetReq=0;let htInPercent=0;let htOfParent=0;let ht=0;let top =0;
+    if(parentEle.children.length != 0){
+      htInPercent =parseFloat(parentEle.lastChild.style.height);
+      htOfParent = parseInt(document.defaultView.getComputedStyle(parentEle).height);
+      ht = htInPercent/100 * htOfParent;
+      top =parseInt(parentEle.lastChild.style.top)
+      offsetReq= ht+top;
     }
-    console.log(totalHt);
-    return totalHt;
+    return offsetReq;
   }
   createElement(){
     switch(this.element){
@@ -59,7 +55,9 @@ class HtmlElement{
       case 'button':
         this.createBtn();
         break;
-        
+      case 'p':
+        this.paragraph();
+        break;
       case 'table':
         this.askTblReq();
         break;
@@ -69,6 +67,9 @@ class HtmlElement{
       case 'date & time':
         this.dateTime();
         break;
+      case 'input':
+        this.createInput();
+        break;
       default:
         console.log("Please enter the correct element name");
     }
@@ -76,25 +77,30 @@ class HtmlElement{
   createDiv(){
     let div=document.createElement('div');
     //Default Style
-    div.style.height='100px';
+    div.style.height='10%';
     div.style.width='100%';
-    div.style.left='0px';
-    div.style.top=this.getOffsetTop()+'px';
+    div.style.left='0%';
+    div.style.position='absolute';
+    div.style.top=this.getOffsetTop(this.parentElement)+'px';
     div.style.backgroundColor=getRandomColor();
-    div.setAttribute('id','div_'+Date.now());
-
+    this.id='div_'+Date.now();
+    div.setAttribute('id',this.id);
+    div.style.resize='both';
     this.parentElement.appendChild(div);
   }
   createSpan(){
     let span=document.createElement('span');
     //Default Style
-    span.style.height='100px';
-    span.style.width='100%';
-    span.style.left='0px';
-    span.style.top=this.getOffsetTop()+'px';
-    span.style.display='inline';
-    span.style.backgroundColor=getRandomColor();
+    span.style.height='20px';
+    span.style.left='0%';
+    span.style.top=this.getOffsetTop(this.parentElement)+'px';
+    //span.style.display='inline';
+    span.style.position='absolute';
+    span.style.fontSize='16px';
+    span.style.fontWeight='normal';
+    span.style.fontFamily='Arial';
     span.setAttribute('id','span_'+Date.now());
+    this.id='span_'+Date.now();
     span.textContent='Enter Text';
 
     this.parentElement.appendChild(span);
@@ -106,9 +112,11 @@ class HtmlElement{
     nav.style.backgroundColor = '#333';
     nav.style.height='60px';
     nav.style.width='100%';
-    nav.style.left='0px';
-    nav.style.top=this.getOffsetTop()+'px';
+    nav.style.left='0%';
+    nav.style.position='absolute';
+    nav.style.top=this.getOffsetTop(this.parentElement)+'px';
     nav.setAttribute('id','nav_'+Date.now());
+    this.id='nav_'+Date.now();
     let items=document.createElement('li');
       items.style.float='left';
       items.style.width='auto';
@@ -131,11 +139,14 @@ class HtmlElement{
       items.textContent='Menu#';
       items.style.color='#ffffff';
       items.setAttribute('id','nav-items'+Date.now());
+      this.id='nav-items'+Date.now();
     }
     else{
       items.textContent='ListItem#';
       items.style.color='#000000';
       items.setAttribute('id','list-item'+Date.now());
+      this.id='list-item'+Date.now();
+
     }
     
     items.style.width='auto';
@@ -151,9 +162,10 @@ class HtmlElement{
   addList(type){
     let nav = document.createElement(type);
     nav.style.padding='1px 50px';
-    nav.style.left='0px';
-    nav.style.top=this.getOffsetTop()+'px';
+    nav.style.left='0%';
+    nav.style.top=this.getOffsetTop(this.parentElement)+'px';
     nav.setAttribute('id',type+'_'+Date.now());
+    this.id=type+'_'+Date.now();
     let items=document.createElement('li');
       items.textContent='ListItem';
       items.setAttribute('id','list-item'+Date.now());
@@ -169,8 +181,14 @@ class HtmlElement{
     div.style.backgroundColor='#f4f4f4';
     div.style.textAlign='center';
     div.innerHTML=today+"<br/>"+time;
-    div.style.left='0px';
-    div.style.top=this.getOffsetTop()+'px';
+    div.style.left='0%';
+    div.style.position='absolute';
+    div.style.height='60px';
+    div.style.width='100%';
+    div.style.paddingTop='10px';
+    div.style.top=this.getOffsetTop(this.parentElement)+'px';
+    div.setAttribute('id','div_'+Date.now());
+    this.id='div_'+Date.now();
     document.innerHtml='<script>'+
       setInterval(() => {
         var date = new Date();
@@ -200,7 +218,9 @@ class HtmlElement{
     this.parentElement.appendChild(div);
   }
   askImgReq(){
-    let displayZone=document.querySelector('.html-playground');
+    let displayZone=document.querySelector('.ask-opt');
+    let pause = document.querySelector('.pause');
+    pause.style.display='block';
     let div = document.createElement('div');
     //Styling Div
     div.style.width='60%';
@@ -210,8 +230,8 @@ class HtmlElement{
     div.style.opacity='0.9';
     div.style.position='absolute';
     div.style.display='inline';
-    div.style.top='50px';
-    div.style.left='50px';
+    div.style.top='150px';
+    div.style.left='30%';
     div.style.color='#ffffff';
     div.setAttribute('class','ask-opt');
     //div.style.contentAlign="center";
@@ -221,12 +241,13 @@ class HtmlElement{
     this.createInputType('submit','Add Image','add-img',div)
 
     this.inputOpt=displayZone.appendChild(div);
-    console.log(this.inputOpt);
 
     //TO DO: trun off the draggable property of sidebarmenu
   }
   askTblReq(){
-    let displayZone=document.querySelector('.html-playground');
+    let displayZone=document.querySelector('.ask-opt');
+    let pause = document.querySelector('.pause');
+    pause.style.display='block';
     let div = document.createElement('div');
     //Styling Div
     div.style.width='60%';
@@ -236,7 +257,7 @@ class HtmlElement{
     div.style.opacity='0.9';
     div.style.position='absolute';
     div.style.top='50px';
-    div.style.left='50px';
+    div.style.left='30%';
     div.style.color='#ffffff';
     div.setAttribute('class','ask-opt');
     //div.style.contentAlign="center";
@@ -272,25 +293,30 @@ class HtmlElement{
     if(type == 'submit'){
       //event.preventDefault();
       input.setAttribute('value',title);
-      input.style.backgroundColor = '#BA2F16';
       input.style.marginTop="-2px";
       input.style.marginBottom="-2px";
-      if(title == 'Create Table'){
-        input.style.backgroundColor = '#26ae60';
-        input.addEventListener('click',() => this.tblAction(title));
-      }
-      else if(title == 'Add Image'){
-        input.style.backgroundColor = '#26ae60';
-        input.addEventListener('click',() =>this.addImage());
-      }
+        if(title == 'Create Table'){
+          input.style.backgroundColor = '#26ae60';
+          input.addEventListener('click',() => this.tblAction(title));
+        }
+        else if(title == 'Add Image'){
+          input.style.backgroundColor = '#26ae60';
+          input.addEventListener('click',() =>this.addImage());
+        }
+        else if(title == 'Cancel'){
+          input.style.backgroundColor = '#BA2F16';
+          input.addEventListener('click',() => this.tblAction(title));
+        }
       
     }
     span.appendChild(input);
     parentElement.appendChild(span);
   }
   tblAction(title){
-    let displayZone=document.querySelector('.html-playground');
-    console.log(title);
+    let dropzone=this.parentElement;
+    let pause = document.querySelector('.pause');
+    let displayZone = document.querySelector('.ask-opt');
+    //console.log(this.parentElement);
     if(title == 'Create Table'){
       let row = document.getElementById('row').value;
       let col = document.getElementById('column').value ;
@@ -298,10 +324,12 @@ class HtmlElement{
         alert("Row or Column value cannot be equal to zero.");
       }
       else{
-        this.createTable(row,col,displayZone);
+        this.createTable(row,col,dropzone);
+        pause.style.display='none';
       }
     } 
-    else{
+    if(title == 'Cancel'){
+      pause.style.display='none';
       displayZone.removeChild(this.inputOpt);
     }
   }
@@ -311,9 +339,12 @@ class HtmlElement{
     //table.style.border='1px solid #000000';
     table.style.width='80%';
     table.style.margin='2px auto';
-    table.style.left='0px';
-    table.style.top=this.getOffsetTop()+'px';
+    table.style.left='0%';
+    table.style.top=this.getOffsetTop(parentElement)+'px';
+    table.style.position='absolute';
+    table.style.textAlign='center';
     table.setAttribute('id','tbl_'+Date.now());
+    this.id='tbl_'+Date.now();
     for(let i=0;i<row;i++){
       let tr=document.createElement('tr');
       if(i==0){
@@ -331,32 +362,43 @@ class HtmlElement{
       table.appendChild(tr);
       for(let j=0;j<col;j++){
         let td=document.createElement('td');
-        td.textContent="1";
+        if(i==0){
+          td.textContent="<<title>>";
+        }
+        else{
+          td.textContent="<<data>>";
+        }
         td.setAttribute('id','td_'+i);
         tr.appendChild(td);
       }
     }
-    parentElement.removeChild(this.inputOpt);
+    document.querySelector('.ask-opt').removeChild(this.inputOpt);
     parentElement.appendChild(table);
     
   }
   addImage(){
-    let dropzone=document.querySelector('.html-playground');
+    let dropzone=document.querySelector('.ask-opt');
+    let pause = document.querySelector('.pause');
+    pause.style.display='none';
     let imgSrc = document.getElementById('img-src').value;
     let div = document.createElement('div');
-    div.style.height='240px';
-    div.style.width='240px';
-    //div.style.position='relative';
-    div.style.left='0px';
-    div.style.top=this.getOffsetTop()+'px';
+    div.style.height='25%';
+    div.style.width='35%';
+    div.style.left='0%';
+    div.style.border='2px solid black';
+    div.style.position='absolute';
+    div.classList.add('img-holder');
+    div.style.top=this.getOffsetTop(this.parentElement)+'px';
+    div.setAttribute('id','img-'+Date.now());
     let img = document.createElement('img');
     img.style.position='absolute';
     img.style.height='100%';
     img.style.width='100%';
     img.setAttribute('src',imgSrc);
+    this.id='div_'+Date.now();
     div.appendChild(img);
 
-    dropzone.appendChild(div);
+    this.parentElement.appendChild(div);
     dropzone.removeChild(this.inputOpt);
     console.log(imgSrc);
 
@@ -369,12 +411,56 @@ class HtmlElement{
     btn.style.backgroundColor='#2C3335';
     btn.style.color='#ffffff';
     btn.style.lineHeight='30px';
+    btn.style.height='36px';
     btn.textContent='Button';
-    btn.style.left='0px';
-    btn.style.top=this.getOffsetTop()+'px';
+    btn.style.display='inline-block';
+    btn.style.left='0%';
+    btn.style.top=this.getOffsetTop(this.parentElement)+'px';
+    console.log(btn.style.top);
+    btn.style.position='absolute';
     btn.setAttribute('id','btn_'+Date.now());
-
+    this.id='btn_'+Date.now();
     this.parentElement.appendChild(btn);
+  }
+  paragraph(){
+    let p = document.createElement('p');
+    p.style.textAlign='justify';
+    p.style.lineHeight='22px';
+    p.style.fontSize='16px';
+    p.style.padding='5px';
+    p.style.position='absolute';
+    p.style.fontSize='16px';
+    p.style.fontWeight='normal';
+    p.style.fontFamily='Arial';
+    p.style.top=this.getOffsetTop(this.parentElement)+'px';
+    p.setAttribute('id','p_'+Date.now());
+    this.id='p_'+Date.now();
+    p.innerText='Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi porro ex corrupti incidunt ad! Esse necessitatibus enim illum eius, assumenda minus voluptas exercitationem deleniti tenetur laboriosam veniam quo quasi nostrum!';
+
+    this.parentElement.appendChild(p);
+  }
+  createInput(){
+    let input = document.createElement('input');
+    input.style.height='25px';
+    input.style.width='25%';
+    input.style.margin='2px';
+    this.id='input_'+Date.now();
+    input.setAttribute('id',this.id);
+    input.setAttribute('placeholder','Placeholder text');
+    if(this.parentElement.tagName =='UL'){
+      input.style.width='100%';
+      let items = document.createElement('li');
+      items.style.float='left';
+      items.style.lineHeight='60px';
+      items.style.color='#ffffff';
+      items.setAttribute('id','nav-items'+Date.now());
+      this.id='nav-items'+Date.now();
+      items.appendChild(input);
+      this.parentElement.appendChild(items);
+    }
+    else{
+      this.parentElement.appendChild(input);
+    }
   }
 }
 export default HtmlElement;

@@ -4,64 +4,83 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Draw HTML</title>
+	<title>Drag HTML</title>
 	<link rel="stylesheet" href="style/reset.css">
 	<link rel="stylesheet" href="style/layout.css">
 	<link rel="stylesheet" href="style/style.css">
 </head>
 <body>
 	<div class="container">
-		<button id='get-sidebar'>Sidebar &rarr;</button>
 		<div class="sidebar-menu">
 			<div class="project-info">
-                <img src="images/logo.png" alt="Logo">
+                <img src="images/logo.png" alt="Logo" id="logo">
                 <h1 class="logo">
 					&#9998;
-                    <span class='text-navy'>Draw</span> 
+                    <span class='text-navy'>Drag</span> 
                     <span class='text-moroon'>HTML</span>
                 </h1>
 			</div>
 			<div class="option-wrapper">
 				<div class="menu">
-					<span class="menu-title">Menu <span class="action"> &darr;</span></span>
+					<span class="menu-title" title="Drag tags to white space">Tags </span>
                     <ul class='draggable'>
-                        <li>DIV</li>
-                        <li>SPAN</li>
-                        <li>Button</li>
-						<li>Img</li>
-						<li>Lists</li>
-						<li>List Items</li>
-						<li>Navigation Menu</li>
-						<li>Navigation Items</li>
-                        <li>TABLE</li>
-                        <li>Social Media Plugin</li>
-                        <li>Date & Time</li>
+                        <li><kbd>DIV</kbd></li>
+						<li><kbd>SPAN</kbd></li>
+						<li><kbd>P</kbd></li>
+                        <li><kbd>Button</kbd></li>
+						<li><kbd>Img</kbd></li>
+						<li><kbd>Input</kbd></li>
+						<li><kbd>Lists</kbd></li>
+						<li><kbd>Navigation Menu</kbd></li>
+						<li><kbd>TABLE</kbd></li>
+						<li class='break'></li>
+						<li><kbd>Navigation Items</kbd></li>
+						<li><kbd>List Items</kbd></li>
+						<li class='break'></li>
+                        <!-- <li><kbd>Social Media Plugin</kbd></li> -->
+                        <li><kbd>Date & Time</kbd></li>
                     </ul>
 				</div>
-				<div class="options">
-					<span class="menu-title">Elements Info</span>
-					<!-- Display Options  -->
-					<div id="display-opt"></div>
+				<div class="projects">
+					<span class="menu-title" title="Select templates">Projects <span class="action"> &darr;</span></span>
+					<div class="template-menu">
+						<select id="edit-project">
+							<option>Select Template:</option>
+						</select>
+						<hr>
+						<input type="file" id='load-template'>
+					</div>
 				</div>
-				<div class="template">
-					<span class="menu-title">Templates</span>
-					<input type="file" id='load-template'>
-				</div>
-				<div class="template">
-					<span class="menu-title" id="save-as">Save as HTML</span>
-				</div>
-				<div class="opt">
-					<span class="menu-title">Options</span>
-					<input type="text" placeholder="Key" class='save-edit-input' id='key'>
-					<button id='save'>Save</button>
-					<button id='edit'>Edit</button>
-				</div>
-				<div class="preview">
-					<span class="menu-title" id='preview'>Preview</span>
+				<div class="activity-log">
+					<span class="activity" title="View Activity Log"><span class="menu-title">Activity</span></span>
+					<div class="all-activity">
+						<div class="msg-area"></div>
+						<div class="activity-msg"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="html-playground" id="playground"></div>
+		<button style='position: fixed;right:0;bottom:5px;' class="options" id="save-opt">&#128193; Save</button>
+		<button style='position: fixed;right:0px;bottom:40px;' class="options" id="preview"> &#128065; Preview</button>
+		<button class="options" id="undo" title="Undo">&#9100;</button>
+		<button id='get-sidebar'>Sidebar &rarr;</button>
+		<div class="pause"></div>
+		<div class="opt-menu">
+			<span class="menu-title">Save Menu</span>
+			<input type="text" placeholder="File Name(Key)" class='save-edit-input' id='key'>
+			<button id='save-as'>Download HTML</button>
+			<button id='save'>Save</button>
+			<button id='edit'>Edit</button>
+			<button id='cancel'>Cancel</button>
+		</div>
+		<div class="ask-opt"></div>
+		<!-- Selected Items Options -->
+		<div class="element-info">
+			<span class="menu-title">Elements Info</span>
+			<!-- Display Options  -->
+			<div id="display-opt"></div>
+		</div>
 	</div>
 	<script type="module" src="js/main.js"></script>
 </body>

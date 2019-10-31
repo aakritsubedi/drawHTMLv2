@@ -1,19 +1,25 @@
 import HtmlElement from '../js/htmlElement.js';
 import Template from '../js/template.js';
+import UI from '../js/ui.js';
 
 class Sidebar{
   constructor(){
     console.log("Sidebar Constructor");
     this.parentEle=null;
     this.dragElement=null;
-    this.allChild=[];
+    this.allChild=null;
+    this.undo=null;
     this.init();
   }
   init(){
     //Initilizing variable
+    this.logo = document.querySelector('#logo');
     this.sidebar = document.querySelector('.sidebar-menu');
     this.menuOpt = document.querySelector('.draggable');
     this.dropzone = document.querySelector('.html-playground');
+    this.undo=document.querySelector('#undo');
+    this.activity=document.querySelector('.activity');
+    this.allChild=[];
     this.parentEle = this.dropzone;
     //calling necessary function
     this.addDraggableProp();
@@ -23,16 +29,22 @@ class Sidebar{
 
     this.template = new Template();
   }
+  newFile(){
+    let playground=document.querySelector('#playground');
+    playground.innerHTML='';
+    this.allChild.splice(0,this.allChild.length);
+  }
   //Adding Draggable Property in list items
   addDraggableProp(){
     let list = this.menuOpt.children;
     for(let i=0;i<list.length;i++){
       list[i].setAttribute('draggable',true);
+      list[i].setAttribute('title','Drag '+list[i].innerText+' tag');
     }
   }
   menuToggle(){
     let clickCount=0;
-    let menuBtn = document.querySelector('.menu .menu-title');
+    let menuBtn = document.querySelector('.projects .menu-title');
     menuBtn.addEventListener('click',()=>{
     if(clickCount == 0){
       menuBtn.parentElement.children[1].style.display='block';
@@ -48,27 +60,46 @@ class Sidebar{
   }
   dragInit(e){
     this.dragElement=e.target.textContent.toLowerCase();
-    console.log(this.dragElement);
   }
   dragEnter(e){
     this.parentEle=e.target;
   }
   dropElement(e){
+    this.undo.style.backgroundColor='#26ae60';
     this.allChild.push(new HtmlElement(this.parentEle,this.dragElement)); 
+  }
+  undoEvent(e){
+    if(this.allChild.length>0){
+      let id=this.allChild.pop().id;
+      let lastAction = document.getElementById(id);
+      lastAction.parentElement.removeChild(lastAction);
+    }
+    else{
+      console.log("No Action");
+      this.undo.style.backgroundColor='#B83227';
+    }
   }
   addEvent(){
     this.menuOpt.addEventListener('dragstart',this.dragInit.bind(this),false);
     this.dropzone.addEventListener('dragenter',this.dragEnter.bind(this),false);
     this.menuOpt.addEventListener('dragend',this.dropElement.bind(this),false);
+    this.undo.addEventListener('click',this.undoEvent.bind(this));
+    this.logo.addEventListener('click',this.newFile.bind(this));
+    this.activity.addEventListener('click',this.activityLog.bind(this));
   }
   preview(){
     var preview = document.getElementById('preview');
+    var saveOpt = document.getElementById('save-opt');
+    var undoOpt = document.getElementById('undo');
     preview.addEventListener('click',()=>{
       var menu=document.querySelector('.sidebar-menu');
       var displaySidebarBtn = document.querySelector('#get-sidebar');
       displaySidebarBtn.style.display='block';
       displaySidebarBtn.style.position='absolute';
       menu.style.display='none';
+      preview.style.display='none';
+      undoOpt.style.display='none';
+      saveOpt.style.display='none';
       this.dropzone.style.paddingBottom='0px';
         
       var playground=document.querySelector('.html-playground');
@@ -78,6 +109,9 @@ class Sidebar{
       displaySidebarBtn.addEventListener('click',()=>{
       displaySidebarBtn.style.display='none';
       menu.style.display='block';
+      preview.style.display='block';
+      saveOpt.style.display='block';
+      undoOpt.style.display='block';
       playground.style.transition='all 0.0001s';
       playground.style.width='80%';
       this.dropzone.style.paddingBottom='50px';
@@ -105,7 +139,43 @@ class Sidebar{
     {
         document.body.removeChild(event.target);
     }
-    console.log(content);
+    //console.log(content);
+  }
+  activityLog(){
+    let allActivity=document.querySelector('.all-activity');
+    allActivity.style.display='block';
+    let h3=document.createElement('h3');
+    h3.innerHTML='&#9997; Activity Log';
+    //h3.style.textDecoration='underline';
+    h3.style.color='#ffffff';
+    h3.style.backgroundColor='#4C4B4B';
+    h3.style.lineHeight='34px';
+    let span=document.createElement('span');
+    span.classList.add('cross-btn');
+    span.innerHTML='&#10006;';
+    span.addEventListener('click',(e)=>{
+      allActivity.removeChild(h3);
+      allActivity.removeChild(ul);
+      allActivity.style.display='none';
+    });
+    h3.appendChild(span);
+    let ul=document.createElement('ul');
+    //ul.style.paddingTop='10px';
+    for(let i=0;i<this.allChild.length;i++){
+      let li=document.createElement('li');
+      li.style.fontSize='14px';
+      li.classList.add('liActivity');
+      li.innerHTML='<b>'+this.allChild[i].element+'</b> with id '+this.allChild[i].id+' was added.';
+      //Li Work
+      li.addEventListener('click',()=> this.activityTask(this.allChild[i].id));
+      ul.appendChild(li);
+    }
+    allActivity.prepend(h3);
+    allActivity.appendChild(ul);
+  }
+  activityTask(id){
+    let ui= new UI();
+    ui.selectEleFromActivity(id);
   }
 }
 export default Sidebar;

@@ -1,0 +1,51 @@
+paste before addEvents();
+
+  // kbdFunctionalities(e){
+  //   let selectedEle=this.selectedElement = e.target;
+  //   if(e.ctrlKey){
+  //     selectedEle.addEventListener('click',this.controllerFunction.bind(this));
+  //   }
+  // }
+  // controllerFunction(e){
+  //   if(this.selectedElement.tagName == 'DIV' || this.selectedElement.tagName == 'TABLE' || this.selectedElement.tagName == 'IMG'){
+  //     let controller = document.querySelector('.controller');
+  //     controller.style.display='block';
+  //     controller.children[0].addEventListener('click',this.moveUp.bind(this));
+  //     controller.children[1].addEventListener('click',this.moveDown.bind(this));
+  //     controller.children[2].addEventListener('click',this.moveLf.bind(this));
+  //     controller.children[3].addEventListener('click',this.moveRt.bind(this));
+  //     controller.children[4].addEventListener('click',this.removeController.bind(this));
+  //     controller.style.top=(this.selectedElement.offsetTop+parseInt(this.selectedElement.style.height))/2+20+'px';
+  //     controller.style.left='55%';
+  //   }
+  // }
+  // moveUp(){
+  //   let top = parseInt(this.selectedElement.style.top);
+  //   if(top != 0){
+  //     top -= 1;
+  //   }
+  //   this.selectedElement.style.top = top+'px';
+  // }
+  // moveDown(){
+  //   let top = parseInt(this.selectedElement.style.top);
+  //   top += 1;
+  //   this.selectedElement.style.top = top+'px';
+  // }
+  // moveLf(){
+  //   let left = parseInt(this.selectedElement.style.left);
+  //   if(left != 0){
+  //     left -= 1;
+  //   }
+  //   this.selectedElement.style.left = left+'%';
+  // }
+  // moveRt(){
+  //   let left = parseInt(this.selectedElement.style.left);
+  //   left += 1;
+  //   this.selectedElement.style.left = left+'%';
+  // }
+  // removeController(){
+  //   console.log(this.selectedElement.removeEventListener('click',this.controllerFunction.bind(this)));
+  //   console.log(this.playground.removeEventListener('click',this.kbdFunctionalities.bind(this)) );
+  //   let controller = document.querySelector('.controller');
+  //   controller.style.display='none';
+  // }

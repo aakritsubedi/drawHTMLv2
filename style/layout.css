@@ -1,14 +1,15 @@
 .container{
   padding:0;
   clear: both;
-  min-height: 100vh;
+  min-height: 200vh;
+  
 }
 .sidebar-menu{
-  min-height: inherit;
+  min-height: 100vh;
   width: 20%;
   float: left;
   background-color: #f4f4f4;
-  /* overflow-y: scroll; */
+  position: fixed;
   overflow-x: hidden;
 }
 .project-info{
@@ -18,15 +19,21 @@
 }
 .html-playground{
   width: 80%;
-  min-height:100vh;
-  border:1px dotted #000000;
+  min-height:inherit;
   box-sizing: border-box;
   float: right;
-  padding-bottom: 50px;
+  padding-bottom: 100px;
   position: relative;
-  /* display: flex; */
+  background-color: #ffffff;
 }
-.html-playground > * {
-  position: absolute;
-  /* flex-grow: 1; */
+
+.all-activity{
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  position:absolute;
+  top:0;
+  display: none;
+  background-color: #DAE0E2;
+  padding:0;
 }

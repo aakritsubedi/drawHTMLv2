@@ -1,0 +1,82 @@
+<div id="div1366559" style="position: absolute;width: 25%;height:75px;top:0px;left:0px;padding:5px;">
+			<img src="https://www.lftechnology.com/wp-content/themes/Archive/img/logo_leapfrog.svg" style="height: 100%;width: 100%;">
+		</div>
+		<div id="div4696126" style="position: absolute;top:0px;left:25%;height: 75px;width: 75%;"> 
+			<ul id="nav-1569861" style="list-style: none;line-height: 75px;">
+				<li id="li-13640" style="float:left;width:auto;padding-left: 30px;">About</li>
+				<li id="li-13641" style="float:left;width:auto;padding-left: 30px;">Case Studies</li>
+				<li id="li-13642" style="float:left;width:auto;padding-left: 30px;">Insights</li>
+				<li id="li-13643" style="float:left;width:auto;padding-left: 30px;">AI</li>
+				<li id="li-13644" style="float:left;width:auto;padding-left: 30px;">Careers</li>
+				<li id="li-13645" style="float:left;width:auto;padding-left: 30px;">Contact</li>
+			</ul>
+		</div>
+		<div id="div5698614" style="position:absolute;height:100px;width: 100%;top:75px;left:0px;"></div>
+		<div id="div4597863" style="position: absolute;left:0px;top:175px;height: 300px;width: 100%;">
+			<div id="div-1256394556" style="height:300px;width: 45%;padding:25px;left:10px;top:0px;">
+				<p id="p-1233645699" style='font-weight:normal;font-family:Arial;font-size:16px;'>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+			<div id="div-12563956256" style="position:absolute;height:300px;width: 45%;left: 50%;top:0px;">
+				<img src="https://www.lftechnology.com/wp-content/themes/Archive/img/home_graphic_main.svg" style="height: 100%;width: 100%;" id="img-15966469">
+			</div>
+		</div>
+		<div id="div5698756" style="position: absolute;left:0px;top:475px;height: 300px;width: 100%;">
+			<div id="div-1596484" style="position:absolute;height:300px;width: 45%;left:0px;top:0px;">
+				<img src="https://www.lftechnology.com/wp-content/themes/Archive/img/group_main_001.svg" style="height: 100%;width: 100%;">
+			</div>
+			<div id="div-1598624" style="position:absolute;height:300px;width: 45%;padding:25px;left:45%;top:0px;">
+				<p id="p-7965861" style='font-weight:normal;font-family:Arial;font-size:16px;'>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+		</div>
+		<div id="div4596125" style="position:absolute;height:75px;width: 100%;top:775px;left:0px;"></div>
+		<div id="div4789654" style="position: absolute;height:450px;width: 100%;top:850px;left:0px;">
+			<div id="div7896541" style="position:absolute;top:75px;padding:25px;left:10px;width:50%;">
+				<p id="p1568476" style='font-weight:normal;font-family:Arial;font-size:16px;'>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+			<div id="div7896542" style="position:absolute;top:0px;left:50%;width:50%;">
+				<img src="https://www.lftechnology.com/wp-content/themes/Archive/img/group_main_002.svg" style="height: 100%;width: 100%;">
+			</div>
+		</div>
+		<div id="div8567489" style="position: absolute;left:0px;top:1300px;height: 300px;width: 100%;">
+			<div id="div-1596483" style="position:absolute;height:300px;width: 45%;left:0px;top:0px;">
+				<img src="https://www.lftechnology.com/wp-content/themes/Archive/img/group_main_003.svg" style="height: 100%;width: 100%;">
+			</div>
+			<div id="div-1598625" style="position:absolute;height:300px;width: 45%;padding:25px;left:45%;top:0px;">
+				<p id="p-7965862" style='font-weight:normal;font-family:Arial;font-size:16px;'>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<p id="p-1569876" style='font-weight:normal;font-family:Arial;font-size:16px;'>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				</p>
+			</div>
+		</div>
+		<div id="div-123665" style="position:absolute;top:1600px;height: 60px;width: 100%;background-color: #222222;color:#ffffff;">
+			<span id="span1697456" style="line-height: 60px;padding-left:10px;"> &copy; Copyright 2019, Leapfrog Technology. All Rights Reserved.</span>
+		</div>
