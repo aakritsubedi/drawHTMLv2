@@ -27,6 +27,9 @@ class HtmlElement{
       htInPercent =parseFloat(parentEle.lastChild.style.height);
       htOfParent = parseInt(document.defaultView.getComputedStyle(parentEle).height);
       ht = htInPercent/100 * htOfParent;
+      if(parentEle.lastChild.getAttribute('id').includes('img_')){
+        ht=parseInt(parentEle.lastChild.style.height);
+      }
       top =parseInt(parentEle.lastChild.style.top)
       offsetReq= ht+top;
     }
@@ -381,26 +384,23 @@ class HtmlElement{
     pause.style.display='none';
     let imgSrc = document.getElementById('img-src').value;
     let div = document.createElement('div');
-    div.style.height='25%';
-    div.style.width='35%';
+    div.style.height='240px';
+    div.style.width='240px';
     div.style.left='0%';
-    div.style.border='2px solid black';
+    div.style.border='4px solid black';
     div.style.position='absolute';
     div.classList.add('img-holder');
     div.style.top=this.getOffsetTop(this.parentElement)+'px';
-    div.setAttribute('id','img-'+Date.now());
+    this.id='img_'+Date.now();
+    div.setAttribute('id',this.id);
     let img = document.createElement('img');
     img.style.position='absolute';
     img.style.height='100%';
     img.style.width='100%';
     img.setAttribute('src',imgSrc);
-    this.id='div_'+Date.now();
     div.appendChild(img);
-
     this.parentElement.appendChild(div);
     dropzone.removeChild(this.inputOpt);
-    console.log(imgSrc);
-
   }
   createBtn(){
     let btn = document.createElement('button');

@@ -58,7 +58,6 @@ class UI{
     opt.style.display='none';
     let heightLimit=parseInt(document.defaultView.getComputedStyle(this.selectedElement.parentElement).height);
     let widthLimit=parseInt(document.defaultView.getComputedStyle(this.selectedElement.parentElement).width);
-    console.log('Dragging',heightLimit,widthLimit);
     let newWidth = this.startWidth + e.clientX - this.startX;
     let newHeight = this.startHeight + e.clientY - this.startY;
     if(newHeight <= heightLimit){
