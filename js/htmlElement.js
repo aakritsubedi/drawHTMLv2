@@ -237,7 +237,7 @@ class HtmlElement{
     div.style.color='#ffffff';
     div.setAttribute('class','ask-opt');
     //div.style.contentAlign="center";
-    div.innerHTML='<span style="background-color:#222222;color:#ffffff;display:block;line-height:45px;padding:0 10px;border-bottom:1px solid #ffffff; margin-bottom:5px;">Table Options</span>';
+    div.innerHTML='<span style="background-color:#222222;color:#ffffff;display:block;line-height:45px;padding:0 10px;border-bottom:1px solid #ffffff; margin-bottom:5px;font-size:22px;">Image Options</span>';
 
     this.createInputType('text','Image URL','img-src',div);
     this.createInputType('submit','Add Image','add-img',div)
@@ -263,7 +263,7 @@ class HtmlElement{
     div.style.color='#ffffff';
     div.setAttribute('class','ask-opt');
     //div.style.contentAlign="center";
-    div.innerHTML='<span style="background-color:#222222;color:#ffffff;display:block;line-height:45px;padding:0 10px;border-bottom:1px solid #ffffff; margin-bottom:5px;">Table Options</span>';
+    div.innerHTML='<span style="background-color:#222222;color:#ffffff;display:block;line-height:45px;padding:0 10px;border-bottom:1px solid #ffffff; margin-bottom:5px;font-size:22px;">Table Options</span>';
 
     this.createInputType('number','No. of rows','row',div);
     this.createInputType('number','No. of column','column',div);
