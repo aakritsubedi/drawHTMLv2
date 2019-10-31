@@ -1,13 +1,9 @@
-import UI from '../js/ui.js';
 function getRandomColor() {
   var r = Math.floor(Math.random()*256);          // Random between 0-255
   var g = Math.floor(Math.random()*256);          // Random between 0-255
   var b = Math.floor(Math.random()*256);          // Random between 0-255
   var color = 'rgb(' + r + ',' + g + ',' + b + ')'; // Collect all to a string
   return color;
-}
-function getRandomNo(lower,upper){
-  return Math.floor(Math.random() * upper) + lower;  
 }
 class HtmlElement{
   constructor(parentElement,element){
@@ -21,6 +17,7 @@ class HtmlElement{
     this.element=element;
     this.createElement();
   }
+  //Function calculates the offset to place the next dragged element just below the last element 
   getOffsetTop(parentEle){
     let offsetReq=0;let htInPercent=0;let htOfParent=0;let ht=0;let top =0;
     if(parentEle.children.length != 0){
@@ -35,6 +32,7 @@ class HtmlElement{
     }
     return offsetReq;
   }
+  //Hadle various create element request from the sidebar drag and drop
   createElement(){
     switch(this.element){
       case 'div':
@@ -77,10 +75,11 @@ class HtmlElement{
         console.log("Please enter the correct element name");
     }
   }
+  //Create Div with default styling
   createDiv(){
     let div=document.createElement('div');
     //Default Style
-    div.style.height='10%';
+    div.style.height='20%';
     div.style.width='100%';
     div.style.left='0%';
     div.style.position='absolute';
@@ -90,6 +89,7 @@ class HtmlElement{
     div.setAttribute('id',this.id);
     this.parentElement.appendChild(div);
   }
+  //Create Span with default styling
   createSpan(){
     let span=document.createElement('span');
     //Default Style
@@ -107,6 +107,7 @@ class HtmlElement{
 
     this.parentElement.appendChild(span);
   }
+  //Create Div with navigation menu with default styling
   navigationMenu(){
     let nav = document.createElement('ul');
     nav.style.listStyle='none';
@@ -133,6 +134,7 @@ class HtmlElement{
       this.parentElement.appendChild(nav);
     }
   }
+  //adding ListItems -><li> tag
   addListItems(usedfor){
     let items=document.createElement('li');
     if(usedfor == 'nav'){
@@ -175,6 +177,7 @@ class HtmlElement{
       
     this.parentElement.appendChild(nav);
   }
+  //adding Date&Time with coounter
   dateTime(){
     let d = new Date();
     let today=d.getFullYear()+'/'+(d.getMonth()+1)+'/'+d.getDate();
@@ -219,6 +222,7 @@ class HtmlElement{
     +'</script>'
     this.parentElement.appendChild(div);
   }
+  //Menu Model to input Image source
   askImgReq(){
     let displayZone=document.querySelector('.ask-opt');
     let pause = document.querySelector('.pause');
@@ -245,6 +249,7 @@ class HtmlElement{
 
     //TO DO: trun off the draggable property of sidebarmenu
   }
+  //Menu Model to input the table configuration
   askTblReq(){
     let displayZone=document.querySelector('.ask-opt');
     let pause = document.querySelector('.pause');
@@ -274,6 +279,7 @@ class HtmlElement{
     //TO DO: trun off the draggable property of sidebarmenu
     
   }
+  //Create <input> for the above Requirement Model 
   createInputType(type,title,use,parentElement){
     let span=document.createElement('span');
     //Styling Span
@@ -313,6 +319,7 @@ class HtmlElement{
     span.appendChild(input);
     parentElement.appendChild(span);
   }
+  //Validate The table requirement & perform necessary actions
   tblAction(title){
     let dropzone=this.parentElement;
     let pause = document.querySelector('.pause');
@@ -334,6 +341,7 @@ class HtmlElement{
       displayZone.removeChild(this.inputOpt);
     }
   }
+  //Create <table> with no. of row and column as user choice 
   createTable(row,col,parentElement){
     let table=document.createElement('table');
     //Basic Table Style
@@ -377,6 +385,7 @@ class HtmlElement{
     parentElement.appendChild(table);
     
   }
+  //add Image with src defined
   addImage(){
     let dropzone=document.querySelector('.ask-opt');
     let pause = document.querySelector('.pause');
@@ -401,6 +410,7 @@ class HtmlElement{
     this.parentElement.appendChild(div);
     dropzone.removeChild(this.inputOpt);
   }
+ //Creates Button
   createBtn(){
     let btn = document.createElement('button');
     //Styling
@@ -420,6 +430,7 @@ class HtmlElement{
     this.id='btn_'+Date.now();
     this.parentElement.appendChild(btn);
   }
+  //Create <p> tag with lorem text 
   paragraph(){
     let p = document.createElement('p');
     p.style.textAlign='justify';
@@ -437,6 +448,7 @@ class HtmlElement{
 
     this.parentElement.appendChild(p);
   }
+  //Creates <input type='text' placeholder='...'>
   createInput(){
     let input = document.createElement('input');
     input.style.height='25px';

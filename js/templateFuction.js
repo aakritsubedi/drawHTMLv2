@@ -1,3 +1,5 @@
+
+
 class TempalateFunction{
     constructor(){
         console.log("From Template Function Constructor");
@@ -65,7 +67,6 @@ class TempalateFunction{
             localStorage.setItem(keyValue,JSON.stringify(that.activity));
         }
         this.saveMenuOpt.style.display='none';
-        console.log(this.activity);
     }
     cancel(){
         let cancel = document.getElementById('cancel');
@@ -85,7 +86,6 @@ class TempalateFunction{
         if(this.checkExisting('edit',keyValue)){
             let activity=localStorage.getItem(keyValue);
             activity=JSON.parse(activity);
-            //console.log(activity);
             let task=null;
             let parentEle=null;
             for(let i=0;i<activity.length;i++){

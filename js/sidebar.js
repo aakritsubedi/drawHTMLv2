@@ -29,6 +29,7 @@ class Sidebar{
 
     this.template = new Template();
   }
+  //New 
   newFile(){
     let playground=document.querySelector('#playground');
     playground.innerHTML='';
@@ -43,6 +44,7 @@ class Sidebar{
       list[i].setAttribute('ondragstart','event.dataTransfer.setData(\'text/plain\',null)');
     }
   }
+  //Toggle Projects Menu to display and hide the options below
   menuToggle(){
     let clickCount=0;
     let menuBtn = document.querySelector('.projects .menu-title');
@@ -59,6 +61,7 @@ class Sidebar{
     }
     });
   }
+  //Initilize the drag event from TAGS
   dragInit(e){
     this.dragElement=e.target.textContent.toLowerCase();
   }
@@ -69,6 +72,7 @@ class Sidebar{
     this.undo.style.backgroundColor='#26ae60';
     this.allChild.push(new HtmlElement(this.parentEle,this.dragElement)); 
   }
+  //Undo == removes the last element acc to activity log
   undoEvent(e){
     if(this.allChild.length>0){
       let id=this.allChild.pop().id;
@@ -80,6 +84,7 @@ class Sidebar{
       this.undo.style.backgroundColor='#B83227';
     }
   }
+  //add necessary events
   addEvent(){
     this.menuOpt.addEventListener('dragstart',this.dragInit.bind(this),false);
     this.dropzone.addEventListener('dragenter',this.dragEnter.bind(this),false);
@@ -88,6 +93,7 @@ class Sidebar{
     this.logo.addEventListener('click',this.newFile.bind(this));
     this.activity.addEventListener('click',this.activityLog.bind(this));
   }
+  //Preview the HTML created
   preview(){
     var preview = document.getElementById('preview');
     var saveOpt = document.getElementById('save-opt');
@@ -119,9 +125,10 @@ class Sidebar{
       });
     })
   }
+  //Saving Options
   saveAs(){
     let content="<html><head><title>DrawHTML</title></head><style>*{margin:0;padding:0;}</style></body>";
-    content += document.querySelector('.html-playground').innerHTML;
+    content += document.querySelector('.container').children[1].innerHTML;
     content += "</body></html>";
     var textToSaveAsBlob = new Blob([content], {type:"text/html"});
     var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
@@ -142,6 +149,7 @@ class Sidebar{
     }
     //console.log(content);
   }
+  //Activity Logs
   activityLog(){
     let sidebar = document.querySelector('.sidebar-menu');
     sidebar.style.borderTop='none';
@@ -179,6 +187,7 @@ class Sidebar{
     allActivity.prepend(h3);
     allActivity.appendChild(ul);
   }
+  //To set selectedElemet in UI class from activity log and perform functionalities
   activityTask(id){
     let ui= new UI();
     ui.selectEleFromActivity(id);

@@ -1,4 +1,3 @@
-import Sidebar from '../js/sidebar.js';
 class UI{
   constructor(){
     this.playground=null;
@@ -18,6 +17,7 @@ class UI{
     this.doDrag = this.doDrag.bind(this);
     this.stopDrag = this.stopDrag.bind(this);
   }
+  //Set the selectedElement acc to div Id from activity log 
   selectEleFromActivity(id){
     let activityMsg = document.querySelector('.activity-msg');
     let msgArea = document.querySelector('.msg-area');
@@ -42,6 +42,7 @@ class UI{
       activityMsg.style.top='-100px';
     }, 4000);
   }
+  //A function to conver rgb to hex code
   rgbToHex(rgb){
     rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
     return (rgb && rgb.length === 4) ? "#" +
@@ -49,10 +50,12 @@ class UI{
     ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
     ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
   }
+   //Set the selectedElement acc to clicked/selected element in DOM 
   getClickedElement(e){
     this.selectedElement = e.target;
     this.displayEditMenu();
   }
+  //Resize the div on Drag start
   doDrag(e) {
     let opt = document.querySelector('.element-info');
     opt.style.display='none';
@@ -76,7 +79,7 @@ class UI{
     }
     this.displayDimension(newHeight,newWidth);
   }
-  
+  //Function to remove the eventsListener after resize is over
   stopDrag(e) {
     this.selectedElement.style.border='none';
     let that=this;
@@ -98,6 +101,7 @@ class UI{
       that.selectedElement.style.height = heightPercent+'%';
     } 
   }
+  //Initilize Resize 
   initDrag(e) {
     this.selectedElement.style.border='1px dashed #000000';
     this.startX = e.clientX;
@@ -107,6 +111,7 @@ class UI{
     document.documentElement.addEventListener('mousemove',this.doDrag, false);
     document.documentElement.addEventListener('mouseup', this.stopDrag, false);
   }
+  //Display the dimension on resize on the resize button
   displayDimension(ht,wd){
     this.resizeBtn.style.backgroundColor='#4C4B4B';
     this.resizeBtn.style.width='75px';
@@ -117,6 +122,7 @@ class UI{
     this.resizeBtn.innerText= ht+' x '+ wd;
 
   }
+  //Adds the resize button that initiates the resize functionalities
   addResizeBtn(e){
     this.removeAllResizeBtn();
     this.selectedElement=e.target;
@@ -136,17 +142,20 @@ class UI{
       this.resizeBtn.addEventListener('mousedown',this.initDrag);
     }
   }
+  //removes the resize button if other element contains the id#resize-btn
   removeAllResizeBtn(){
     let resizeBtn = document.querySelectorAll('#resize-btn');
     for(let i=0;i<resizeBtn.length;i++){
       resizeBtn[i].parentElement.removeChild(resizeBtn[i]);
     }
   }
+  //Adds all necessary eventListener 
   addEvents(){
     this.playground.addEventListener('dblclick',this.getClickedElement.bind(this));
     this.addResizeBtn = this.addResizeBtn.bind(this);
     this.playground.addEventListener('click',this.addResizeBtn);
   }
+  //Get all the value for displayEditMenu()
   getAllProperty(){
     let left=0;let top=0;let ht=0;let wd=0;let id=null;
     let bgColor=this.selectedElement.style.backgroundColor;
@@ -232,11 +241,13 @@ class UI{
       opt.appendChild(optDiv);
     }
   }
+  //Removes border of unselected Elements
   removeOtherBorder(){
     for(let i=0;i<this.playground.children.length;i++){
       this.playground.children[i].style.border='none';
     }
   }
+  //Create <textarea> for displayEditMenu()
   createTextArea(parentEle,value,id){
     let span=document.createElement('span');
     span.style.fontSize='12px';
@@ -251,6 +262,7 @@ class UI{
     parentEle.appendChild(span);
     parentEle.appendChild(textarea);
   }
+  //Create <button> and adds functionalities for displayEditMenu()
   createBtn(ht,top,opt,optDiv){
     let btn = document.createElement('button');
       btn.textContent='Update';
@@ -290,6 +302,7 @@ class UI{
       optDiv.appendChild(btnCancel);
       optDiv.appendChild(btnDelete);
   }
+  //get all the value when update button is clicked and change styling accordingly
   getValue(preHt,preTop){
     let opt = document.querySelector('.element-info');
     let inputFieldZone = opt.children[1];
@@ -351,6 +364,7 @@ class UI{
     }
     opt.style.display='none';
   }
+  //Create <input> for displayEditMenu()
   createInputField(parentEle,type,value,id){
     let span=document.createElement('span');
     span.style.fontSize='12px';
