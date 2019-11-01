@@ -21,11 +21,11 @@ class HtmlElement{
   getOffsetTop(parentEle){
     let offsetReq=0;let htInPercent=0;let htOfParent=0;let ht=0;let top =0;
     if(parentEle.children.length != 0){
-      htInPercent =parseFloat(parentEle.lastChild.style.height);
-      htOfParent = parseInt(document.defaultView.getComputedStyle(parentEle).height);
-      ht = htInPercent/100 * htOfParent;
-      if(parentEle.lastChild.getAttribute('id').includes('img_')){
-        ht=parseInt(parentEle.lastChild.style.height);
+      ht=parseInt(parentEle.lastChild.style.height);
+      if(parentEle.lastChild.tagName=='DIV'){
+        htInPercent =parseFloat(parentEle.lastChild.style.height);
+        htOfParent = parseInt(document.defaultView.getComputedStyle(parentEle).height);
+        ht = htInPercent/100 * htOfParent;
       }
       top =parseInt(parentEle.lastChild.style.top)
       offsetReq= ht+top;

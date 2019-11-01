@@ -21,7 +21,7 @@
 }
 .html-playground{
   width: 80%;
-  min-height:100vh;
+  height:100vh;
   box-sizing: border-box;
   float: right;
   padding-bottom: 100px;

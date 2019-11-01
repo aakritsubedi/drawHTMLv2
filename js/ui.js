@@ -12,6 +12,7 @@ class UI{
   init(){
     this.playground=document.querySelector('.html-playground');
     this.selectedElement=document.querySelector('.html-playground');
+    this.dimensionInfo = this.dimensionInfo.bind(this);
     this.addEvents();
     this.initDrag =this.initDrag.bind(this)
     this.doDrag = this.doDrag.bind(this);
@@ -154,6 +155,7 @@ class UI{
     this.playground.addEventListener('dblclick',this.getClickedElement.bind(this));
     this.addResizeBtn = this.addResizeBtn.bind(this);
     this.playground.addEventListener('click',this.addResizeBtn);
+    this.selectedElement.addEventListener('click',this.dimensionInfo);
   }
   //Get all the value for displayEditMenu()
   getAllProperty(){
@@ -392,6 +394,46 @@ class UI{
     div.style.bottom='0';
 
     this.selectedElement.appendChild(div);
+  }
+  dimensionInfo(e){
+    this.selectedElement = e.target;
+    if(e.ctrlKey){
+      let dimensionBox = document.querySelector('.html-info');
+      dimensionBox.style.left='0px';
+      if(dimensionBox.children.length != 0){
+        dimensionBox.removeChild(dimensionBox.firstChild);
+      }
+      let id=this.selectedElement.getAttribute('id');
+      let tag=this.selectedElement.tagName;
+      let ht=document.defaultView.getComputedStyle(this.selectedElement).height;
+      let wd=document.defaultView.getComputedStyle(this.selectedElement).width;
+      let color=this.selectedElement.style.backgroundColor;
+      let info = {
+        tag: tag,
+        id: id,
+        ht: ht,
+        wd: wd
+      }
+      let ul=document.createElement('ul');
+      function addInfo(){
+        for(let key in info){
+          let li=document.createElement('li');
+          li.classList.add('dimension-li');
+          li.style.borderColor=color;
+          li.innerHTML ='<b>'+key+': </b>'+info[key];
+
+          ul.appendChild(li);
+        }     
+      }
+      addInfo();
+      dimensionBox.appendChild(ul);
+      setTimeout(()=>{
+        this.selectedElement.removeEventListener('mouseenter',this.dimensionInfo);
+        dimensionBox.style.left='-275px';
+        dimensionBox.removeChild(ul);
+        console.log("Removed");
+      },5000);
+    }
   }
 }
 export default UI

@@ -121,7 +121,7 @@ class Sidebar{
       undoOpt.style.display='block';
       playground.style.transition='all 0.0001s';
       playground.style.width='80%';
-      this.dropzone.style.paddingBottom='50px';
+      this.dropzone.style.paddingBottom='100px';
       });
     })
   }
