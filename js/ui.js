@@ -396,6 +396,8 @@ class UI{
     this.selectedElement.appendChild(div);
   }
   dimensionInfo(e){
+    let opt = document.querySelector('.element-info');
+    opt.style.display='none';
     this.selectedElement = e.target;
     if(e.ctrlKey){
       let dimensionBox = document.querySelector('.html-info');
