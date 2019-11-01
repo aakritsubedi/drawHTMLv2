@@ -398,6 +398,7 @@ class UI{
   dimensionInfo(e){
     let opt = document.querySelector('.element-info');
     opt.style.display='none';
+    this.removeOtherBorder();
     this.selectedElement = e.target;
     if(e.ctrlKey){
       let dimensionBox = document.querySelector('.html-info');
